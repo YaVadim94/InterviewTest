@@ -1,0 +1,24 @@
+﻿create table products (id int, name varchar(255));
+create table categories (id int, name varchar(255));
+create table products_categories (id int, product_id int, category_id int);
+
+insert into products values (1, 'earphones');
+insert into products values (2, 'phone');
+insert into products values (3, 'laptop');
+insert into products values (4, 'gamepad');
+
+insert into categories values (1, 'neccessary');
+insert into categories values (2, 'unneccessary');
+
+insert into products_categories values (1, 1, 1);
+insert into products_categories values (2, 2, 1);
+insert into products_categories values (3, 4, 2);
+
+select * from products;
+select * from categories;
+select * from products_categories;
+
+###Итоговый запрос
+select p.name, c.name from products p
+left join products_categories pc on p.id = pc.product_id
+left join categories c on c.id = pc.category_id;
